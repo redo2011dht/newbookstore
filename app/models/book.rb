@@ -1,4 +1,7 @@
 class Book < ActiveRecord::Base
+	
+	validates :category_id, :publisher_id, :title,:price, presence: true
+
 	belongs_to :publisher
 	belongs_to :category
 
