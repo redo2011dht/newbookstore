@@ -3,6 +3,15 @@ ActiveAdmin.register Book do
 
 	scope :all, default: true
 	
+	#filter
+	filter :category
+	filter :publisher
+	filter :title	
+	filter :author
+	filter :price
+
+
+
 	##pagination
 	 config.per_page = 3
 	index do		
