@@ -2,35 +2,52 @@ ActiveAdmin.register Book do
 	permit_params :title, :description, :publisher_id, :category_id, :price,  :author,:image
 
 	scope :all, default: true
-
-
-
+	
+	
 	index do
-		column "Select" do |book|
-			check_box("puppy", "commands", {:multiple => true}, "sit", nil)
-		end
-
 		column :title
 		column :description
 		column :author
 		column :category
 		column :publisher
-		
 
 		column "Image", sortable: :image do |book|
-			image_tag book.image.url(:thumb)
+			link_to image_tag(book.image.url(:thumb)),admin_book_path(book)
 		end
-		
+
 		column "Price", sortable: :price do |book|
-			number_to_currency book.price			
+			 number_to_currency(book.price, :unit => "Vnđ", :separator => ',', :delimiter => ".", :format => "%n %u",)	
 		end
 
 		column "Edit" do |book|
 			link_to "Edit", edit_admin_book_path(book)			
 		end
+		
 	end
 
-	
+	show do		
+		image_tag book.image.url(:large) 		
+		#number_to_currency book.price
+		 attributes_table do
+		     row :image do
+		        image_tag book.image.url(:large) 		       
+		      end
+		     row :title    
+		     row :description
+		     row :author
+		     row :category
+		     row :publisher
+		     row :price do
+		     	number_to_currency(book.price, :unit => "Vnđ", :separator => ',', :delimiter => ".", :format => "%n %u",)
+		     end
+		  
+		    end
+		    active_admin_comments		
+	end
+
+		
+
+
 	form do |f|
 		f.inputs "BookDetails" do
 			f.input :category
