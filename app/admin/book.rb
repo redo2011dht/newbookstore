@@ -11,6 +11,7 @@ ActiveAdmin.register Book do
 	##pagination
 	 config.per_page = 3
 	index do	
+		#show checkbox Batch Actions
 		selectable_column
 		column :title
 		column :description
