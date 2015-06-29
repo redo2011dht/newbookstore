@@ -1,8 +1,6 @@
 ActiveAdmin.register Book do
 	permit_params :title, :description, :publisher_id, :category_id, :price,  :author,:image
-
 	scope :all, default: true
-	
 	#filter
 	filter :category
 	filter :publisher
@@ -10,11 +8,10 @@ ActiveAdmin.register Book do
 	filter :author
 	filter :price
 
-
-
 	##pagination
 	 config.per_page = 3
-	index do		
+	index do	
+		selectable_column
 		column :title
 		column :description
 		column :author
