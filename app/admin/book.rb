@@ -3,8 +3,9 @@ ActiveAdmin.register Book do
 
 	scope :all, default: true
 	
-	
-	index do
+	##pagination
+	 config.per_page = 3
+	index do		
 		column :title
 		column :description
 		column :author
