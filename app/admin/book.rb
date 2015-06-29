@@ -20,10 +20,7 @@ ActiveAdmin.register Book do
 			 number_to_currency(book.price, :unit => "Vnđ", :separator => ',', :delimiter => ".", :format => "%n %u",)	
 		end
 
-		column "Edit" do |book|
-			link_to "Edit", edit_admin_book_path(book)			
-		end
-		
+		actions
 	end
 
 	show do		
